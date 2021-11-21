@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CategoryActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#E1E8ED">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#475188"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp">
+
+                    <androidx.appcompat.widget.SearchView
+                        android:id="@+id/search_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/search_view_background"
+                        android:textColor="#FFFFFF"
+                        app:queryHint="Tìm kiếm sách, tác giả"></androidx.appcompat.widget.SearchView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/border_top_radius"></LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="40pt"
+                android:padding="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Danh mục thể loại sách"
+                    android:textSize="20dp"
+                    android:textColor="#253F4C"
+                    android:textStyle="bold"></TextView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="160dp"
+                            android:layout_height="120dp"
+                            android:background="@drawable/culture_btn"
+                            android:text="Văn hóa"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:padding="10dp"
+                            android:layout_marginTop="20dp"></TextView>
+
+                        <TextView
+                            android:layout_width="160dp"
+                            android:layout_height="120dp"
+                            android:background="@drawable/history_btn"
+                            android:text="Lịch sử"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:padding="10dp"
+                            android:layout_marginTop="20dp"></TextView>
+
+                        <TextView
+                            android:layout_width="160dp"
+                            android:layout_height="120dp"
+                            android:background="@drawable/psychology_btn"
+                            android:text="Tâm lý"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:padding="10dp"
+                            android:layout_marginTop="20dp"></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="30dp">
+
+                        <TextView
+                            android:layout_width="160dp"
+                            android:layout_height="120dp"
+                            android:background="@drawable/science_btn"
+                            android:text="Khoa học"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:padding="10dp"
+                            android:layout_marginTop="20dp">
+
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="160dp"
+                            android:layout_height="120dp"
+                            android:background="@drawable/fiction_btn"
+                            android:text="Viễn tưởng"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:padding="10dp"
+                            android:layout_marginTop="20dp"></TextView>
+
+                        <TextView
+                            android:layout_width="160dp"
+                            android:layout_height="120dp"
+                            android:background="@drawable/life_style_btn"
+                            android:text="Lối sống"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:padding="10dp"
+                            android:layout_marginTop="20dp"></TextView>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
