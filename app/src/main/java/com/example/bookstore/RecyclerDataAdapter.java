@@ -25,7 +25,16 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
         this.context = context;
         this.books = books;
     }
+    public static class DataViewHolder extends RecyclerView.ViewHolder{
+        //private TextView tv_book_name;
+        private ImageView iv_book_image;
+        public  DataViewHolder(View itemView){
+            super(itemView);
+            iv_book_image = (ImageView) itemView.findViewById(R.id.iv_book_image);
+            //tv_book_name = (TextView) itemView.findViewById(R.id.tv_book_name);
+        }
 
+    }
     @NonNull
     @Override
     public DataViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -52,14 +61,5 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
         return books == null ? 0 : books.size();
     }
 
-    public static class DataViewHolder extends RecyclerView.ViewHolder{
-        //private TextView tv_book_name;
-        private ImageView iv_book_image;
-        public  DataViewHolder(View itemView){
-            super(itemView);
-            iv_book_image = (ImageView) itemView.findViewById(R.id.iv_book_image);
-            //tv_book_name = (TextView) itemView.findViewById(R.id.tv_book_name);
-        }
 
-    }
 }
