@@ -1,6 +1,7 @@
 package com.example.bookstore;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,17 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
         Glide.with(context)
                 .load(img_url)
                 .into(holder.iv_book_image);
+        holder.iv_book_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.iv_book_image.getContext(),BookDetailActivity.class);
+                intent.putExtra("book_name",book.getBook_name());
+                intent.putExtra("book_cost",book.getCost());
+                intent.putExtra("book_image",book.getBook_image());
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                holder.iv_book_image.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

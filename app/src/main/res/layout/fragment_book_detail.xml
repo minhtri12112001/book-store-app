@@ -19,7 +19,7 @@
             android:layout_height="wrap_content">
 
             <FrameLayout
-                android:id="@+id/productimage"
+                android:id="@+id/productImage"
                 android:layout_width="match_parent"
                 android:layout_height="379dp"
                 android:background="@drawable/toolbar"
@@ -27,10 +27,10 @@
                 android:visibility="visible">
 
                 <ImageView
+                    android:id="@+id/iv_book_detail_book_image"
                     android:layout_width="300dp"
                     android:layout_height="400dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/img" />
+                    android:layout_gravity="center"/>
 
             </FrameLayout>
 
@@ -44,6 +44,7 @@
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/tv_book_detail_book_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -60,7 +61,7 @@
                 android:id="@+id/rating"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/productimage"
+                android:layout_below="@+id/productImage"
                 android:background="#fff"
                 android:gravity="center"
                 android:orientation="horizontal"
@@ -68,6 +69,7 @@
                 android:visibility="visible">
 
                 <TextView
+                    android:id="@+id/tv_book_detail_book_cost"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
