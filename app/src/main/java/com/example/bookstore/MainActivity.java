@@ -156,9 +156,16 @@ public class MainActivity extends AppCompatActivity {
                         for (DocumentChange doc : value.getDocumentChanges()){
 
                             if (doc.getType() == DocumentChange.Type.ADDED){
-
-                                books.add(doc.getDocument().toObject(Book.class));
+                                String book_id = doc.getDocument().getId();
+                                //Log.d("Document",book_id);
+                                Book book = doc.getDocument().toObject(Book.class);
+                                book.setBook_id(book_id);
+                                Log.d("Document",book.getBook_id());
+                                books.add(book);
+                                //books.add(doc.getDocument().toObject(Book.class));
+                                //books.add(doc.getDocument().getId().toObject(Book.class));
                                 BookAdapter.notifyDataSetChanged();
+
                             }
 
 
