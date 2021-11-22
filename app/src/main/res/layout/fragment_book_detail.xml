@@ -194,7 +194,9 @@
                         android:paddingRight="20dp"
                         android:paddingLeft="20dp"
                         android:textStyle="bold"
-                        android:text="Nội dung bộ sách được biên soạn, biên dịch theo đúng cấu trúc, nội dung và chương trình của sách giáo khoa đang được NXBGDVN xuất bản, phát hành hiện nay và sẽ giúp các em từng bước làm quen với việc học toán bằng tiếng Anh: từ việc biết đọc từ toán, biết viết các phép tính đến việc tận dụng vốn kiến thức toán đã học vào việc học toán và các môn học khác; Do vậy bộ sách hoàn toàn phù hợp cho việc dạy và học trong nhà trường."></TextView>
+                        android:text="Nội dung bộ sách được biên soạn, biên dịch theo đúng cấu trúc, nội dung và chương trình của sách giáo khoa đang được NXBGDVN xuất bản, phát hành hiện nay và sẽ giúp các em từng bước làm quen với việc học toán bằng tiếng Anh: từ việc biết đọc từ toán, biết viết các phép tính đến việc tận dụng vốn kiến thức toán đã học vào việc học toán và các môn học khác; Do vậy bộ sách hoàn toàn phù hợp cho việc dạy và học trong nhà trường.">
+
+                    </TextView>
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>

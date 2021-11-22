@@ -27,12 +27,12 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
         this.books = books;
     }
     public static class DataViewHolder extends RecyclerView.ViewHolder{
-        //private TextView tv_book_name;
+        private TextView tv_book_name;
         private ImageView iv_book_image;
         public  DataViewHolder(View itemView){
             super(itemView);
             iv_book_image = (ImageView) itemView.findViewById(R.id.iv_book_image);
-            //tv_book_name = (TextView) itemView.findViewById(R.id.tv_book_name);
+            tv_book_name = (TextView) itemView.findViewById(R.id.tv_book_name);
         }
 
     }
@@ -49,8 +49,9 @@ public class RecyclerDataAdapter extends RecyclerView.Adapter<RecyclerDataAdapte
     public void onBindViewHolder(@NonNull DataViewHolder holder, int position) {
 
         Book book = books.get(position);
-        //String book_name = books.get(position).getBook_name();
-        //holder.tv_book_name.setText(book.getBook_name());
+        String book_name = books.get(position).getBook_name();
+        String book_id = books.get(position).getBook_id();
+        holder.tv_book_name.setText(book_id);
         String img_url = book.getBook_image();
         Glide.with(context)
                 .load(img_url)

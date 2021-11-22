@@ -1,19 +1,25 @@
 package com.example.bookstore.Object;
 
 public class Book {
-    //private String book_id;
+    private String book_id;
     private String book_name;
     private String book_image;
     private Double cost;
     private Double total_number;
 
     public Book(){}
-    public Book(String book_name, String book_image, Double cost, Double total_number){
-        //this.book_id = book_id;
+    public Book(String book_id,String book_name, String book_image, Double cost, Double total_number){
+        this.book_id = book_id;
         this.book_name = book_name;
         this.book_image = book_image;
         this.cost = cost;
         this.total_number = total_number;
+    }
+    public String getBook_id(){
+        return book_id;
+    }
+    public void setBook_id(String book_id){
+        this.book_id = book_id;
     }
     public String getBook_name(){
         return book_name;
