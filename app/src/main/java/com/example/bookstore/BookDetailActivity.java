@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BookDetailActivity extends AppCompatActivity {
-    private TextView tv_book_name, tv_book_cost;
+    private TextView tv_book_name, tv_book_cost, tv_author;
     private ImageView iv_book_detail_book_image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +24,13 @@ public class BookDetailActivity extends AppCompatActivity {
 
         tv_book_name = findViewById(R.id.tv_book_detail_book_name);
         tv_book_cost = findViewById(R.id.tv_book_detail_book_cost);
+        tv_author = findViewById(R.id.tv_author);
         iv_book_detail_book_image = findViewById(R.id.iv_book_detail_book_image);
 
 
         //Set content for each book detail activity
         tv_book_name.setText(getIntent().getStringExtra("book_name"));
+        tv_author.setText(getIntent().getStringExtra("author"));
         String book_image = getIntent().getStringExtra("book_image");
         Glide.with(this)
                 .load(book_image)

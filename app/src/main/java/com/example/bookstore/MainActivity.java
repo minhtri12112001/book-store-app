@@ -1,7 +1,5 @@
 package com.example.bookstore;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,42 +7,27 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.bookstore.Object.Book;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rv_top_10_trending_book;
     private RecyclerView rv_book_menu;
-    private RecyclerDataAdapter BookAdapter;
+    private Top5PublishDayBookDataAdapter BookAdapter;
     private FirebaseFirestore db;
     private ArrayList<Book> books;
     private ImageView iv_book_image;
@@ -91,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         books = new ArrayList<Book>();
         iv_book_image = findViewById(R.id.iv_book_image);
-        BookAdapter = new RecyclerDataAdapter(MainActivity.this, books);
+        BookAdapter = new Top5PublishDayBookDataAdapter(MainActivity.this, books);
         //books.add(new Book("sapiens","firebase.com",50000,10));
 
         rv_book_menu = (RecyclerView) findViewById(R.id.rv_book_menu);
@@ -162,8 +145,6 @@ public class MainActivity extends AppCompatActivity {
                                 book.setBook_id(book_id);
                                 Log.d("Document",book.getBook_id());
                                 books.add(book);
-                                //books.add(doc.getDocument().toObject(Book.class));
-                                //books.add(doc.getDocument().getId().toObject(Book.class));
                                 BookAdapter.notifyDataSetChanged();
 
                             }
