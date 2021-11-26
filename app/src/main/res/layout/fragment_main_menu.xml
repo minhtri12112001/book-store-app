@@ -139,15 +139,23 @@
                     android:layout_height="match_parent">
 
                 </androidx.recyclerview.widget.RecyclerView>
-            </LinearLayout>
-            <!--
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_top_10_trending_book"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10pt"
+                    android:text="Giá tốt nhất"
+                    android:textColor="#253F4C"
+                    android:textSize="15dp"
+                    android:textStyle="bold">
 
-            </androidx.recyclerview.widget.RecyclerView>
-            -->
+                </TextView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_top_5_cheapest_cost_book"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>

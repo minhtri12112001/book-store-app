@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.bookstore.Adapter.Top5CheapestCostBookDataAdapter;
 import com.example.bookstore.Adapter.Top5PublishDayBookDataAdapter;
 import com.example.bookstore.Object.Book;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,11 +27,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView rv_top_10_trending_book, rv_top_5_publish_day_book;
+    private RecyclerView rv_top_5_cheapest_cost_book, rv_top_5_publish_day_book;
     private RecyclerView rv_book_menu;
-    private Top5PublishDayBookDataAdapter Top5PublishDayBookAdapter;
+    private Top5PublishDayBookDataAdapter top5PublishDayBookAdapter;
+    private Top5CheapestCostBookDataAdapter top5CheapestCostBookDataAdapter;
     private FirebaseFirestore db;
-    private ArrayList<Book> books, Top5PublishDayBooks;
+    private ArrayList<Book> books, top5PublishDayBooks, top5CheapestCostBooks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,27 +76,33 @@ public class MainActivity extends AppCompatActivity {
 
         //Define database source, others books lists
         db = FirebaseFirestore.getInstance();
-        Top5PublishDayBooks = new ArrayList<Book>();
+        top5PublishDayBooks = new ArrayList<Book>();
+        top5CheapestCostBooks = new ArrayList<Book>();
         //books = new ArrayList<Book>();
         //BookAdapter = new Top5PublishDayBookDataAdapter(MainActivity.this, books);
-        Top5PublishDayBookAdapter = new Top5PublishDayBookDataAdapter(MainActivity.this, Top5PublishDayBooks);
+        top5PublishDayBookAdapter = new Top5PublishDayBookDataAdapter(MainActivity.this, top5PublishDayBooks);
+        top5CheapestCostBookDataAdapter = new Top5CheapestCostBookDataAdapter(MainActivity.this, top5CheapestCostBooks);
 
 
         // Set adapter and layout manager for each books lists recycler view
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
 
         // Top 5 publish day books
         rv_top_5_publish_day_book = (RecyclerView) findViewById(R.id.rv_top_5_publish_day_book);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         rv_top_5_publish_day_book.setLayoutManager(layoutManager);
         rv_top_5_publish_day_book.setHasFixedSize(true);
-        rv_top_5_publish_day_book.setAdapter(Top5PublishDayBookAdapter);
-
+        rv_top_5_publish_day_book.setAdapter(top5PublishDayBookAdapter);
 
         // Top 5 cheapest cost books
-        //rv_top_10_trending_book = (RecyclerView) findViewById(R.id.rv_top_10_trending_book);
-        //rv_top_10_trending_book.setLayoutManager(layoutManager);
-        //rv_top_10_trending_book.setHasFixedSize(true);
-        //rv_book_menu.setAdapter(BookAdapter);
+        rv_top_5_cheapest_cost_book = (RecyclerView) findViewById(R.id.rv_top_5_cheapest_cost_book);
+        rv_top_5_cheapest_cost_book.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        rv_top_5_cheapest_cost_book.setHasFixedSize(true);
+        rv_top_5_cheapest_cost_book.setAdapter(top5CheapestCostBookDataAdapter);
+
+
+
+
+
         CallBookAPIFromCloudFireStore();
 
 
@@ -153,12 +161,35 @@ public class MainActivity extends AppCompatActivity {
                                 Book book = doc.getDocument().toObject(Book.class);
                                 book.setBook_id(book_id);
                                 Log.d("Document",book.getBook_id());
-                                Top5PublishDayBooks.add(book);
-                                Top5PublishDayBookAdapter.notifyDataSetChanged();
+                                top5PublishDayBooks.add(book);
+                                top5PublishDayBookAdapter.notifyDataSetChanged();
                             }
                         }
                     }
                 });
 
+        //Get top 5 cheapest cost books from cloud firestore
+        FirebaseFirestore.getInstance().collection("book").orderBy("cost", Query.Direction.ASCENDING).limit(5)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                        if (error != null){
+                            Log.e("Firestore error",error.getMessage());
+                            return;
+                        }
+                        for (DocumentChange doc : value.getDocumentChanges()){
+
+                            if (doc.getType() == DocumentChange.Type.ADDED){
+                                String book_id = doc.getDocument().getId();
+                                Book book = doc.getDocument().toObject(Book.class);
+                                book.setBook_id(book_id);
+                                Log.d("Document",book.getBook_id());
+                                top5CheapestCostBooks.add(book);
+                                top5CheapestCostBookDataAdapter.notifyDataSetChanged();
+                            }
+                        }
+                    }
+                });
     }
 }
