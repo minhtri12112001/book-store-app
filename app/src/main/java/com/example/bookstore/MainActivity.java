@@ -12,25 +12,25 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.example.bookstore.Adapter.Top5PublishDayBookDataAdapter;
 import com.example.bookstore.Object.Book;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView rv_top_10_trending_book;
+    private RecyclerView rv_top_10_trending_book, rv_top_5_publish_day_book;
     private RecyclerView rv_book_menu;
-    private Top5PublishDayBookDataAdapter BookAdapter;
+    private Top5PublishDayBookDataAdapter Top5PublishDayBookAdapter;
     private FirebaseFirestore db;
-    private ArrayList<Book> books;
-    private ImageView iv_book_image;
+    private ArrayList<Book> books, Top5PublishDayBooks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,18 +71,26 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });*/
+
+        //Define database source, others books lists
         db = FirebaseFirestore.getInstance();
-        books = new ArrayList<Book>();
-        iv_book_image = findViewById(R.id.iv_book_image);
-        BookAdapter = new Top5PublishDayBookDataAdapter(MainActivity.this, books);
-        //books.add(new Book("sapiens","firebase.com",50000,10));
+        Top5PublishDayBooks = new ArrayList<Book>();
+        //books = new ArrayList<Book>();
+        //BookAdapter = new Top5PublishDayBookDataAdapter(MainActivity.this, books);
+        Top5PublishDayBookAdapter = new Top5PublishDayBookDataAdapter(MainActivity.this, Top5PublishDayBooks);
 
-        rv_book_menu = (RecyclerView) findViewById(R.id.rv_book_menu);
+
+        // Set adapter and layout manager for each books lists recycler view
+
+        // Top 5 publish day books
+        rv_top_5_publish_day_book = (RecyclerView) findViewById(R.id.rv_top_5_publish_day_book);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        rv_book_menu.setLayoutManager(layoutManager);
-        rv_book_menu.setHasFixedSize(true);
-        rv_book_menu.setAdapter(BookAdapter);
+        rv_top_5_publish_day_book.setLayoutManager(layoutManager);
+        rv_top_5_publish_day_book.setHasFixedSize(true);
+        rv_top_5_publish_day_book.setAdapter(Top5PublishDayBookAdapter);
 
+
+        // Top 5 cheapest cost books
         //rv_top_10_trending_book = (RecyclerView) findViewById(R.id.rv_top_10_trending_book);
         //rv_top_10_trending_book.setLayoutManager(layoutManager);
         //rv_top_10_trending_book.setHasFixedSize(true);
@@ -126,7 +134,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void CallBookAPIFromCloudFireStore(){
-        FirebaseFirestore.getInstance().collection("book")
+
+        //Get top 5 publish day books from cloud firestore
+        FirebaseFirestore.getInstance().collection("book").orderBy("publish_day", Query.Direction.DESCENDING).limit(5)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -135,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
                             Log.e("Firestore error",error.getMessage());
                             return;
                         }
-
                         for (DocumentChange doc : value.getDocumentChanges()){
 
                             if (doc.getType() == DocumentChange.Type.ADDED){
@@ -144,14 +153,12 @@ public class MainActivity extends AppCompatActivity {
                                 Book book = doc.getDocument().toObject(Book.class);
                                 book.setBook_id(book_id);
                                 Log.d("Document",book.getBook_id());
-                                books.add(book);
-                                BookAdapter.notifyDataSetChanged();
-
+                                Top5PublishDayBooks.add(book);
+                                Top5PublishDayBookAdapter.notifyDataSetChanged();
                             }
-
-
                         }
                     }
                 });
+
     }
 }

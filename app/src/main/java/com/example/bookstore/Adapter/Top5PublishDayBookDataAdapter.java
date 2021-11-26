@@ -1,4 +1,4 @@
-package com.example.bookstore;
+package com.example.bookstore.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.bookstore.BookDetailActivity;
 import com.example.bookstore.Object.Book;
+import com.example.bookstore.R;
 
 import java.util.ArrayList;
 
@@ -58,7 +60,7 @@ public class Top5PublishDayBookDataAdapter extends RecyclerView.Adapter<Top5Publ
         holder.iv_book_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(holder.iv_book_image.getContext(),BookDetailActivity.class);
+                Intent intent = new Intent(holder.iv_book_image.getContext(), BookDetailActivity.class);
                 intent.putExtra("author",book.getAuthor());
                 intent.putExtra("book_name",book.getBook_name());
                 intent.putExtra("book_cost",book.getCost());
