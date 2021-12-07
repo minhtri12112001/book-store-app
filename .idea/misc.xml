@@ -39,7 +39,18 @@
         <entry key="..\:/FlutterPrograms/BookStore/app/src/main/res/layout/menu_item.xml" value="0.152" />
         <entry key="..\:/FlutterPrograms/BookStore/app/src/main/res/layout/search_button.xml" value="0.21557971014492755" />
         <entry key="..\:/FlutterPrograms/BookStore/app/src/main/res/menu/bottom_menu.xml" value="0.264" />
-        <entry key="..\:/Users/LAN ANH/AndroidStudioProjects/book-store-app/app/src/main/res/layout/fragment_book_detail.xml" value="0.1" />
+        <entry key="..\:/Users/LAN ANH/AndroidStudioProjects/book-store-app/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.13125" />
+        <entry key="..\:/Users/LAN ANH/AndroidStudioProjects/book-store-app/app/src/main/res/layout/activity_book_detail.xml" value="0.11510416666666666" />
+        <entry key="..\:/Users/LAN ANH/AndroidStudioProjects/book-store-app/app/src/main/res/layout/activity_cart.xml" value="0.11510416666666666" />
+        <entry key="..\:/Users/LAN ANH/AndroidStudioProjects/book-store-app/app/src/main/res/layout/activity_category.xml" value="0.11510416666666666" />
+        <entry key="..\:/Users/LAN ANH/AndroidStudioProjects/book-store-app/app/src/main/res/layout/activity_customer_settings.xml" value="0.175" />
+        <entry key="..\:/Users/LAN ANH/AndroidStudioProjects/book-store-app/app/src/main/res/layout/activity_main.xml" value="0.175" />
+        <entry key="..\:/Users/LAN ANH/AndroidStudioProjects/book-store-app/app/src/main/res/layout/activity_sign_up.xml" value="0.11510416666666666" />
+        <entry key="..\:/Users/LAN ANH/AndroidStudioProjects/book-store-app/app/src/main/res/layout/bottom_sheet.xml" value="0.11510416666666666" />
+        <entry key="..\:/Users/LAN ANH/AndroidStudioProjects/book-store-app/app/src/main/res/layout/d.xml" value="0.11510416666666666" />
+        <entry key="..\:/Users/LAN ANH/AndroidStudioProjects/book-store-app/app/src/main/res/layout/fragment_book_detail.xml" value="0.14" />
+        <entry key="..\:/Users/LAN ANH/AndroidStudioProjects/book-store-app/app/src/main/res/layout/fragment_login.xml" value="0.175" />
+        <entry key="..\:/Users/LAN ANH/AndroidStudioProjects/book-store-app/app/src/main/res/layout/layout_bottom_sheet.xml" value="0.2" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/drawable/rounded.xml" value="0.12777777777777777" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/drawable/search_view_background.xml" value="0.12777777777777777" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/drawable/toolbar.xml" value="0.2361111111111111" />
