@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,40 +19,40 @@ import com.example.bookstore.R;
 
 import java.util.ArrayList;
 
-public class Top5CheapestCostBookDataAdapter extends RecyclerView.Adapter<Top5CheapestCostBookDataAdapter.DataViewHolder>{
-    private ArrayList<Book> books;
-    private Context context;
+public class BookListByCategoryDataAdapter extends RecyclerView.Adapter<BookListByCategoryDataAdapter.DataViewHolder>{
+private ArrayList<Book> books;
+private Context context;
 
-    public Top5CheapestCostBookDataAdapter(Context context, ArrayList<Book> books){
+public BookListByCategoryDataAdapter(Context context, ArrayList<Book> books){
         this.context = context;
         this.books = books;
-    }
-    public static class DataViewHolder extends RecyclerView.ViewHolder{
-        //private TextView tv_book_name;
-        private ImageView iv_book_image;
-        public  DataViewHolder(View itemView){
-            super(itemView);
-            iv_book_image = (ImageView) itemView.findViewById(R.id.iv_book_image);
-            //tv_book_name = (TextView) itemView.findViewById(R.id.tv_book_name);
         }
+public static class DataViewHolder extends RecyclerView.ViewHolder{
+    private TextView tv_author;
+    private ImageView iv_book_image;
+    public  DataViewHolder(View itemView){
+        super(itemView);
 
+        iv_book_image = (ImageView) itemView.findViewById(R.id.iv_book_view_new_image);
+        tv_author = (TextView) itemView.findViewById(R.id.tv_book_view_new_author);
     }
+
+}
     @NonNull
     @Override
-    public Top5CheapestCostBookDataAdapter.DataViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BookListByCategoryDataAdapter.DataViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView;
-        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_view, parent, false);
-        Top5CheapestCostBookDataAdapter.DataViewHolder dataViewHolder = new Top5CheapestCostBookDataAdapter.DataViewHolder(itemView);
+        itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_view_new, parent, false);
+        BookListByCategoryDataAdapter.DataViewHolder dataViewHolder = new BookListByCategoryDataAdapter.DataViewHolder(itemView);
         return  dataViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Top5CheapestCostBookDataAdapter.DataViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BookListByCategoryDataAdapter.DataViewHolder holder, int position) {
 
         Book book = books.get(position);
-        String book_name = books.get(position).getBook_name();
-        //String book_id = books.get(position).getBook_id();
-        //holder.tv_book_name.setText(book_id);
+        String book_author = books.get(position).getAuthor();
+        holder.tv_author.setText(book_author);
         String img_url = book.getBook_image();
         Glide.with(context)
                 .load(img_url)

@@ -21,6 +21,7 @@ public class BookDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_detail);
+        //setContentView(R.layout.activity_book_list_by_category);
 
         tv_book_name = findViewById(R.id.tv_book_detail_book_name);
         tv_book_cost = findViewById(R.id.tv_book_detail_book_cost);

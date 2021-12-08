@@ -32,54 +32,18 @@ public class MainActivity extends AppCompatActivity {
     private Top5PublishDayBookDataAdapter top5PublishDayBookAdapter;
     private Top5CheapestCostBookDataAdapter top5CheapestCostBookDataAdapter;
     private FirebaseFirestore db;
-    private ArrayList<Book> books, top5PublishDayBooks, top5CheapestCostBooks;
+    private ArrayList<Book> top5PublishDayBooks, top5CheapestCostBooks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /*docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if( task.isSuccessful()){
-                    DocumentSnapshot doc = task.getResult();
-                    if (doc.exists()){
-                        Log.d("Document",doc.getData().toString());
-                        //Log.d("Document",doc.getString("cost"));
-                    }
-                    else {
-                        Log.d("Document","No data");
-                    }
-                }
-            }
-        });*/
-
-
-        // Get book's data from Cloud Firestore (Firebase)
-        /*List<Book> books = new ArrayList<>();
-        FirebaseFirestore.getInstance().collection("book").get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        for (DocumentSnapshot doc : task.getResult()){
-                            books.add(new Book(
-                                    doc.getString("book_name"),
-                                    doc.getString("book_image"),
-                                    doc.getDouble("cost"),
-                                    doc.getDouble("total_number")
-                            ));
-
-                            Log.d("Document", doc.getId() + "=>" + book_name);
-                        }
-                    }
-                });*/
 
         //Define database source, others books lists
         db = FirebaseFirestore.getInstance();
         top5PublishDayBooks = new ArrayList<Book>();
         top5CheapestCostBooks = new ArrayList<Book>();
-        //books = new ArrayList<Book>();
-        //BookAdapter = new Top5PublishDayBookDataAdapter(MainActivity.this, books);
+
         top5PublishDayBookAdapter = new Top5PublishDayBookDataAdapter(MainActivity.this, top5PublishDayBooks);
         top5CheapestCostBookDataAdapter = new Top5CheapestCostBookDataAdapter(MainActivity.this, top5CheapestCostBooks);
 

@@ -6,17 +6,21 @@ public class Book {
     private String author;
     private String book_id;
     private String book_name;
+    private String category;
+    private String id_category;
     private String book_image;
     private Double cost;
     private Double total_number;
     private Date publish_day;
 
     public Book(){}
-    public Book(String author, String book_id,String book_name, String book_image, Double cost, Double total_number, Date publish_day){
+    public Book(String author, String book_id, String category,String id_category, String book_name, String book_image, Double cost, Double total_number, Date publish_day){
         this.author = author;
         this.book_id = book_id;
         this.book_name = book_name;
         this.book_image = book_image;
+        this.category = category;
+        this.id_category = id_category;
         this.cost = cost;
         this.total_number = total_number;
         this.publish_day = publish_day;
@@ -44,6 +48,18 @@ public class Book {
     }
     public void setBook_image(String book_image){
         this.book_image = book_image;
+    }
+    public String getCategory(){
+        return category;
+    }
+    public void setCategory(String id_category){
+        this.category = category;
+    }
+    public String getId_category(){
+        return id_category;
+    }
+    public void setId_category(String id_category){
+        this.id_category = id_category;
     }
     public Number getCost(){
         return cost;
