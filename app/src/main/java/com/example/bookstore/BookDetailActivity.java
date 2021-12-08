@@ -23,7 +23,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class BookDetailActivity extends AppCompatActivity {
-    private TextView tv_book_name, tv_book_cost, buy_now_button;
+    private TextView tv_book_name, tv_book_cost, buy_now_button,  tv_author;
     private ImageView iv_book_detail_book_image,plus_button,minus_button;
     private EditText sizeno_value;
     private Button cart_pay_button;
@@ -31,16 +31,19 @@ public class BookDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_detail);
+        //setContentView(R.layout.activity_book_list_by_category);
 
         buy_now_button = findViewById(R.id.btn_buy_now);
         tv_book_name = findViewById(R.id.tv_book_detail_book_name);
         tv_book_cost = findViewById(R.id.tv_book_detail_book_cost);
+        tv_author = findViewById(R.id.tv_author);
         iv_book_detail_book_image = findViewById(R.id.iv_book_detail_book_image);
         plus_button = findViewById(R.id.plus);
         minus_button = findViewById(R.id.minus);
         sizeno_value = findViewById(R.id.sizeno);
         //Set content for each book detail activity
         tv_book_name.setText(getIntent().getStringExtra("book_name"));
+        tv_author.setText(getIntent().getStringExtra("author"));
         String book_image = getIntent().getStringExtra("book_image");
         Glide.with(this)
                 .load(book_image)
