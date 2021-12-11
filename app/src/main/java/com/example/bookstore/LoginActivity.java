@@ -1,7 +1,5 @@
 package com.example.bookstore;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -22,7 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SignUpActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "EmailPassword";
     private EditText email;
     private EditText password;
@@ -73,9 +71,9 @@ public class SignUpActivity extends AppCompatActivity {
                 String txt_password = email.getText().toString();
 
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
-                    Toast.makeText(SignUpActivity.this, "Empty credentials.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Empty credentials.", Toast.LENGTH_SHORT).show();
                 } else if (txt_password.length() < 6) {
-                    Toast.makeText(SignUpActivity.this, "Password too short.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Password too short.", Toast.LENGTH_SHORT).show();
                 } else {
                     createAccount(txt_email, txt_password);
                 }
@@ -91,11 +89,11 @@ public class SignUpActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success");
-                    Toast.makeText(SignUpActivity.this, "Authentication successful.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Authentication successful.", Toast.LENGTH_SHORT).show();
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                    Toast.makeText(SignUpActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                     updateUI(null);
                 }
             }
