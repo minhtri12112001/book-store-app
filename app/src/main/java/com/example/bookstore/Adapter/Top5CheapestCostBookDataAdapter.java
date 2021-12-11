@@ -61,6 +61,7 @@ public class Top5CheapestCostBookDataAdapter extends RecyclerView.Adapter<Top5Ch
             public void onClick(View view) {
                 Intent intent = new Intent(holder.iv_book_image.getContext(), BookDetailActivity.class);
                 intent.putExtra("author",book.getAuthor());
+                intent.putExtra("book_id",book.getBook_id());
                 intent.putExtra("book_name",book.getBook_name());
                 intent.putExtra("book_cost",book.getCost());
                 intent.putExtra("book_image",book.getBook_image());

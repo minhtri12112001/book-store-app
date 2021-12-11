@@ -7,6 +7,7 @@
         android:topLeftRadius="30dp">
     </corners>
     -->
+    <!--
     <item android:top="1dp">
         <shape android:shape="rectangle">
             <stroke
@@ -15,5 +16,5 @@
             <solid android:color="#00000000" />
         </shape>
     </item>
-
+    -->
 </shape>

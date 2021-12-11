@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import com.example.bookstore.Adapter.Top5CheapestCostBookDataAdapter;
 import com.example.bookstore.Adapter.Top5PublishDayBookDataAdapter;
 import com.example.bookstore.Object.Book;
+import com.example.bookstore.Object.CartItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private Top5CheapestCostBookDataAdapter top5CheapestCostBookDataAdapter;
     private FirebaseFirestore db;
     private ArrayList<Book> top5PublishDayBooks, top5CheapestCostBooks;
-
+    public static ArrayList<CartItem> cartItems;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,11 +64,18 @@ public class MainActivity extends AppCompatActivity {
         rv_top_5_cheapest_cost_book.setHasFixedSize(true);
         rv_top_5_cheapest_cost_book.setAdapter(top5CheapestCostBookDataAdapter);
 
-
-
-
-
         CallBookAPIFromCloudFireStore();
+
+        // Define Array for cart items
+        if (cartItems != null){
+
+        }
+        else {
+            cartItems = new ArrayList<CartItem>();
+        }
+
+
+
 
 
 

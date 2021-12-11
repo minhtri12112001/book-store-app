@@ -19,7 +19,7 @@
         android:id="@+id/bottom_fragment"
         class="com.example.bookstore.Fragment.BottomNavigationFragment"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="100dp"
         android:layout_weight="1"
         tools:layout="@layout/fragment_bottom_navigation">
 
