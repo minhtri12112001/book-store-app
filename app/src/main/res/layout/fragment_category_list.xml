@@ -36,7 +36,8 @@
                         android:layout_margin="20dp"
                         android:background="@drawable/search_view_background"
                         android:textColor="#FFFFFF"
-                        app:queryHint="Tìm kiếm sách, tác giả"></androidx.appcompat.widget.SearchView>
+                        app:queryHint="Tìm kiếm sách, tác giả">
+                    </androidx.appcompat.widget.SearchView>
                 </LinearLayout>
 
                 <LinearLayout
