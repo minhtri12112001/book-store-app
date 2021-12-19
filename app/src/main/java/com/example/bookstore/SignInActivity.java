@@ -68,7 +68,7 @@ public class SignInActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)){
                     sign_in_error.setText("Mật khẩu hoặc email trống, vui lòng nhập vào");
                     sign_in_error.setVisibility(View.VISIBLE);
-                    Toast.makeText(SignInActivity.this, "Empty credentials.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(SignInActivity.this, "Empty credentials.", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     mAuth.signInWithEmailAndPassword(txt_email,txt_password)
@@ -85,7 +85,7 @@ public class SignInActivity extends AppCompatActivity {
                                 public void onFailure(@NonNull Exception e) {
                                     sign_in_error.setText("Mật khẩu sai, vui lòng đăng nhập lại");
                                     sign_in_error.setVisibility(View.VISIBLE);
-                                    Toast.makeText(SignInActivity.this, "Wrong password", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(SignInActivity.this, "Wrong password", Toast.LENGTH_SHORT).show();
                                 }
                             });
                 }

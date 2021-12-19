@@ -91,15 +91,15 @@ public class SignUpActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
                     sign_up_error.setText("Vui lòng không để trống email và tài khoản");
                     sign_up_error.setVisibility(View.VISIBLE);
-                    Toast.makeText(SignUpActivity.this, "Empty credentials.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(SignUpActivity.this, "Empty credentials.", Toast.LENGTH_SHORT).show();
                 } else if (txt_password.length() < 6) {
                     sign_up_error.setText("Mật khẩu quá ngắn, vui lòng nhập lại");
                     sign_up_error.setVisibility(View.VISIBLE);
-                    Toast.makeText(SignUpActivity.this, "Password too short.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(SignUpActivity.this, "Password too short.", Toast.LENGTH_SHORT).show();
                 } else if((txt_password.equals(txt_confirmPassword)) == false ){
                     sign_up_error.setText("Vui lòng xác nhận đúng mật khẩu đã nhập");
                     sign_up_error.setVisibility(View.VISIBLE);
-                    Toast.makeText(SignUpActivity.this, "Vui lòng nhập đúng lại mật khẩu xác nhận.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(SignUpActivity.this, "Vui lòng nhập đúng lại mật khẩu xác nhận.", Toast.LENGTH_SHORT).show();
                 } else {
                     sign_up_error.setVisibility(View.INVISIBLE);
                     createAccount(txt_email, txt_password);
@@ -139,7 +139,7 @@ public class SignUpActivity extends AppCompatActivity {
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                    Toast.makeText(SignUpActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
                     updateUI(null);
                 }
             }
