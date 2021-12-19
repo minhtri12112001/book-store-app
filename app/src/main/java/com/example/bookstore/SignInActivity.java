@@ -25,6 +25,7 @@ public class SignInActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private FirebaseAuth mAuth;
+    private TextView sign_in_error;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,8 @@ public class SignInActivity extends AppCompatActivity {
         email = findViewById(R.id.txt_email);
         password = findViewById(R.id.txt_password);
         mAuth = FirebaseAuth.getInstance();
+        sign_in_error = findViewById(R.id.sign_in_error);
+        sign_in_error.setVisibility(View.INVISIBLE);
         //Bottom navigation function
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.customerSettings);
@@ -63,6 +66,8 @@ public class SignInActivity extends AppCompatActivity {
                 String txt_email = email.getText().toString();
                 String txt_password = password.getText().toString();
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)){
+                    sign_in_error.setText("Mật khẩu hoặc email trống, vui lòng nhập vào");
+                    sign_in_error.setVisibility(View.VISIBLE);
                     Toast.makeText(SignInActivity.this, "Empty credentials.", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -70,6 +75,7 @@ public class SignInActivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
+                                    sign_in_error.setVisibility(View.INVISIBLE);
                                     MainActivity.isLogin = true;
                                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                 }
@@ -77,6 +83,8 @@ public class SignInActivity extends AppCompatActivity {
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
+                                    sign_in_error.setText("Mật khẩu sai, vui lòng đăng nhập lại");
+                                    sign_in_error.setVisibility(View.VISIBLE);
                                     Toast.makeText(SignInActivity.this, "Wrong password", Toast.LENGTH_SHORT).show();
                                 }
                             });

@@ -28,8 +28,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="170dp">
 
-                    <androidx.appcompat.widget.SearchView
-                        android:id="@+id/search_btn"
+                    <SearchView
+                        android:id="@+id/sv_search"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="20dp"
@@ -37,7 +37,7 @@
                         android:textColor="#FFFFFF"
                         app:queryHint="Tìm kiếm sách, tác giả">
 
-                    </androidx.appcompat.widget.SearchView>
+                    </SearchView>
                 </LinearLayout>
 
                 <LinearLayout

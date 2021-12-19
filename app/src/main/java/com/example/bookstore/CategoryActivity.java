@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.SearchView;
 
 import com.example.bookstore.Adapter.BookCategoryDataAdapter;
 import com.example.bookstore.Object.Category;
@@ -27,13 +28,14 @@ public class CategoryActivity extends AppCompatActivity {
     private BookCategoryDataAdapter bookCategoryDataAdapter;
     private FirebaseFirestore db;
     private ArrayList<Category> bookCategories;
+    private SearchView searchView;
     //private HashSet<String> bookCategories;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-
+        searchView = findViewById(R.id.category_search_view);
         db = FirebaseFirestore.getInstance();
         bookCategories = new ArrayList<Category>();
         bookCategoryDataAdapter = new BookCategoryDataAdapter(CategoryActivity.this,bookCategories);
@@ -45,7 +47,27 @@ public class CategoryActivity extends AppCompatActivity {
         rv_book_category_list.setHasFixedSize(true);
         rv_book_category_list.setAdapter(bookCategoryDataAdapter);
 
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                String text = s;
+                if (text.length() > 0 ){
+                    Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+                    intent.putExtra("search_text", text);
+                    startActivity(intent);
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
         CallBookAPIFromCloudFireStore();
+
+
+
 
 
         //Bottom navigation function

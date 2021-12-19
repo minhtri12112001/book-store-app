@@ -62,10 +62,18 @@
             android:background="@color/clear"
             android:textColor="#253F4C"
             android:hint="Password"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:textSize="15dp" />
     </com.google.android.material.textfield.TextInputLayout>
-
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/sign_in_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:text="error"
+        android:textColor="#F44336">
+    </TextView>
     <Button
         android:layout_gravity="center"
         android:id="@+id/btn_login"

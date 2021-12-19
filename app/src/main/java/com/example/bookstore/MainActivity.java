@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SearchView;
 
 import com.example.bookstore.Adapter.Top5CheapestCostBookDataAdapter;
 import com.example.bookstore.Adapter.Top5PublishDayBookDataAdapter;
@@ -43,6 +44,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rv_top_5_cheapest_cost_book, rv_top_5_publish_day_book;
     private RecyclerView rv_top_5_trending_book;
+    private SearchView searchView;
     private Top5PublishDayBookDataAdapter top5PublishDayBookAdapter;
     private Top5CheapestCostBookDataAdapter top5CheapestCostBookDataAdapter;
     private Top5TrendingBookDataAdapter top5TrendingBookDataAdapter;
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        searchView = findViewById(R.id.sv_search);
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         if (user != null){
@@ -107,8 +110,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+        //searchView.setIconifiedByDefault(true);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                String text = s;
+                if (text.length() > 0 ){
+                    Intent intent = new Intent(getApplicationContext(),SearchActivity.class);
+                    intent.putExtra("search_text", text);
+                    startActivity(intent);
+                }
+                return false;
+            }
 
-
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
 
 
 

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -17,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DeliveryInformationActivity extends AppCompatActivity {
+    ImageView iv_back_cart;
     Button btn_check_deliveryInformation;
     EditText et_deliveryEmail, et_deliveryFullName, et_deliveryPhoneNumber, et_deliveryAddress;
     static String order_id;
@@ -25,6 +27,7 @@ public class DeliveryInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_information);
         btn_check_deliveryInformation = findViewById(R.id.btn_check_deliveryInformation);
+        iv_back_cart = findViewById(R.id.btn_back_cart);
         et_deliveryEmail = findViewById(R.id.et_deliveryEmail);
         et_deliveryFullName = findViewById(R.id.et_deliveryFullName);
         et_deliveryPhoneNumber = findViewById(R.id.et_deliveryPhoneNumber);
@@ -36,6 +39,13 @@ public class DeliveryInformationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 CreateOrderDataToCloudFireStore();
                 startActivity(new Intent(getApplicationContext(),ConfirmOrderActivity.class));
+            }
+        });
+
+        iv_back_cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),CartActivity.class));
             }
         });
     }

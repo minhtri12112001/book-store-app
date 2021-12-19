@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.bookstore.Adapter.CartItemDataAdapter;
@@ -25,6 +26,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class ConfirmOrderActivity extends AppCompatActivity {
+    ImageView iv_back_deliveryInformation;
     static ArrayList<CartItem> orderItems;
     static ArrayList<Long> totalNumberOfEachBooks;
     static ArrayList<Long> totalNumberAlreadySales;
@@ -36,6 +38,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_order);
+        iv_back_deliveryInformation = findViewById(R.id.btn_back_deliveryInformation);
         tv_order_total_cost = findViewById(R.id.tv_order_total_cost);
         CallOrderAPIFromCloudFireStore(DeliveryInformationActivity.order_id);
         btn_confirm_order = findViewById(R.id.btn_confirm_order);
@@ -51,6 +54,13 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         //Log.d("Order item", orderItems.get(0).getBook_id());
         finishOrder(DeliveryInformationActivity.order_id);
 
+
+        iv_back_deliveryInformation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), DeliveryInformationActivity.class));
+            }
+        });
     }
 
     private void finishOrder(String order_id){
