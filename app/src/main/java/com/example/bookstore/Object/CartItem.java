@@ -7,6 +7,13 @@ public class CartItem {
     public String book_image;
     public int total_number;
 
+    public CartItem(String book_id, String book_name, long cost, String book_image, long total_number){
+        this.book_id = book_id;
+        this.book_name = book_name;
+        this.cost = cost;
+        this.book_image = book_image;
+        this.total_number = (int) total_number;
+    }
     public CartItem(String book_id, String book_name, long cost, String book_image, int total_number) {
         this.book_id = book_id;
         this.book_name = book_name;

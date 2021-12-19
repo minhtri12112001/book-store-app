@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingRight="20dp"
+    android:paddingLeft="25dp"
+    android:background="@drawable/cart_item_backround">
+    <ImageView
+        android:id="@+id/iv_order_item_image"
+        android:layout_width="wrap_content"
+        android:layout_height="40pt"
+        >
+    </ImageView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp">
+        <TextView
+            android:id="@+id/tv_order_item_book_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#253F4C"
+            android:text="Book name">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_order_item_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#fe9028"
+            android:text="Total cost"
+            android:layout_marginTop="10dp">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_order_item_total_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#253F4C"
+            android:text="Total number"
+            android:layout_marginTop="10dp">
+        </TextView>
+    </LinearLayout>
+</LinearLayout>

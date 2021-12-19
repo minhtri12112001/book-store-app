@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DeliveryInformationActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#475188"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_marginLeft="110dp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thông tin giao hàng"
+                    android:textSize="22dp"
+                    android:textColor="#FFFFFF"
+                    >
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="#E1E8ED">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ĐỊA CHỈ GIAO HÀNG"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="20dp">
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textColor="#000000"
+                    android:textStyle="bold">
+
+                </TextView>
+                <EditText
+                    android:id="@+id/et_deliveryEmail"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_background"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:padding="10dp"
+                    >
+                </EditText>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Họ và tên người nhận"
+                    android:textColor="#000000"
+                    android:textStyle="bold">
+
+                </TextView>
+                <EditText
+                    android:id="@+id/et_deliveryFullName"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_background"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:padding="10dp"
+                    >
+                </EditText>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Số điện thoại"
+                    android:textColor="#000000"
+                    android:textStyle="bold">
+
+                </TextView>
+                <EditText
+                    android:id="@+id/et_deliveryPhoneNumber"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_background"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:padding="10dp"
+                    >
+                </EditText>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Địa chỉ giao hàng"
+                    android:textColor="#000000"
+                    android:textStyle="bold">
+
+                </TextView>
+                <EditText
+                    android:id="@+id/et_deliveryAddress"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_background"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:padding="10dp"
+                    >
+                </EditText>
+                <Button
+                    android:id="@+id/btn_check_deliveryInformation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Giao đến địa chỉ này"
+                    android:layout_marginTop="50dp">
+                </Button>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

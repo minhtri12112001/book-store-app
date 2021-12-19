@@ -8,29 +8,43 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-public class LoginActivity extends AppCompatActivity {
+import java.util.HashMap;
+import java.util.Map;
+
+public class SignUpActivity extends AppCompatActivity {
     private static final String TAG = "EmailPassword";
     private EditText email;
     private EditText password;
-    private Button register;
+    private EditText confirmPassword;
+    private Button btn_signup;
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
+    private String user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+
+        db = FirebaseFirestore.getInstance();
         //Bottom navigation function
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
@@ -49,10 +63,13 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), CartActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
+                        /*
                     case R.id.customerSettings:
-                        startActivity(new Intent(getApplicationContext(), CustomerSettingsActivity.class));
+                        startActivity(new Intent(getApplicationContext(), SignInActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
+
+                         */
                 }
                 return false;
             }
@@ -61,22 +78,32 @@ public class LoginActivity extends AppCompatActivity {
 
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
-        register = findViewById(R.id.btn_signup);
+        confirmPassword = findViewById(R.id.confirmPassword);
+        btn_signup = findViewById(R.id.btn_signup);
 
         mAuth = FirebaseAuth.getInstance();
-        register.setOnClickListener(new View.OnClickListener() {
+        btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String txt_email = email.getText().toString();
-                String txt_password = email.getText().toString();
-
+                String txt_password = password.getText().toString();
+                String txt_confirmPassword = confirmPassword.getText().toString();
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
-                    Toast.makeText(LoginActivity.this, "Empty credentials.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Empty credentials.", Toast.LENGTH_SHORT).show();
                 } else if (txt_password.length() < 6) {
-                    Toast.makeText(LoginActivity.this, "Password too short.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Password too short.", Toast.LENGTH_SHORT).show();
+                } else if((txt_password.equals(txt_confirmPassword)) == false ){
+                    Toast.makeText(SignUpActivity.this, "Vui lòng nhập đúng lại mật khẩu xác nhận.", Toast.LENGTH_SHORT).show();
                 } else {
                     createAccount(txt_email, txt_password);
                 }
+            }
+        });
+        TextView btn_sign_in = findViewById(R.id.btn_startSignInActivity);
+        btn_sign_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), SignInActivity.class));
             }
         });
     }
@@ -88,12 +115,23 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "createUserWithEmail:success");
-                    Toast.makeText(LoginActivity.this, "Authentication successful.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Authentication successful.", Toast.LENGTH_SHORT).show();
+                    user_id = mAuth.getCurrentUser().getUid();
+                    DocumentReference documentReference = db.collection("users").document(user_id);
+                    Map<String,Object> user = new HashMap<>();
+                    user.put("email",mAuth.getCurrentUser().getEmail());
+                    documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Log.d("msgOnSuccess:", "user profile is created for "+ user_id);
+                        }
+                    });
+                    MainActivity.isLogin = true;
+                    startActivity(new Intent(SignUpActivity.this, MainActivity.class));
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                    Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                     updateUI(null);
                 }
             }

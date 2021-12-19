@@ -12,10 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookStore">
         <activity
+            android:name=".FinishPaymentActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ConfirmOrderActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DeliveryInformationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CustomerSettingsActivity"
+            android:exported="true" />
+        <activity
             android:name=".BookListByCategoryActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".SignUpActivity"
             android:exported="true" />
         <activity
             android:name=".BookDetailActivity"
@@ -24,7 +36,7 @@
             android:name=".CategoryActivity"
             android:exported="true" />
         <activity
-            android:name=".CustomerSettingsActivity"
+            android:name=".SignInActivity"
             android:exported="true" />
         <activity
             android:name=".CartActivity"

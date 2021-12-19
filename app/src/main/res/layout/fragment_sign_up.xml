@@ -7,7 +7,7 @@
     android:background="#E1E8ED"
     android:padding="15dp"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".SignUpActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -36,19 +36,20 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="20dp"
         android:focusable="true"
         android:textColorHint="#253F4C"
         android:focusableInTouchMode="true">
 
         <EditText
             android:id="@+id/email"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:background="@color/clear"
             android:textColor="#253F4C"
             android:inputType="text"
             android:hint="Email"
+            android:layout_gravity="center"
             android:textSize="15dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,19 +57,20 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="20dp"
         android:focusable="true"
         android:textColorHint="#253F4C"
         android:focusableInTouchMode="true">
 
         <EditText
             android:id="@+id/password"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:background="@color/clear"
             android:textColor="#253F4C"
             android:inputType="text"
             android:hint="Password"
+            android:layout_gravity="center"
             android:textSize="15dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,29 +78,55 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="20dp"
         android:focusable="true"
         android:textColorHint="#253F4C"
         android:focusableInTouchMode="true">
 
         <EditText
             android:id="@+id/confirmPassword"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:background="@color/clear"
             android:textColor="#253F4C"
             android:inputType="text"
             android:hint="Confirm Password"
+            android:layout_gravity="center"
             android:textSize="15dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:layout_gravity="center"
         android:id="@+id/btn_signup"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="Đăng ký"
         android:textSize="15dp"
         android:background="@drawable/rounded" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bạn đã có tài khoản?"
+            android:textStyle="bold"
+            android:textColor="#253F4C">
 
+        </TextView>
+        <TextView
+            android:id="@+id/btn_startSignInActivity"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng nhập ngay"
+            android:textStyle="bold"
+            android:textColor="#fe783d">
+
+        </TextView>
+    </LinearLayout>
 </LinearLayout>

@@ -12,20 +12,15 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.bookstore.Adapter.BookCategoryDataAdapter;
-import com.example.bookstore.Object.Book;
 import com.example.bookstore.Object.Category;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 public class CategoryActivity extends AppCompatActivity {
     private RecyclerView rv_book_category_list;
@@ -61,9 +56,15 @@ public class CategoryActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.customerSettings:
-                        startActivity(new Intent(getApplicationContext(), CustomerSettingsActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+                        if (MainActivity.isLogin == true ){
+                            startActivity(new Intent(getApplicationContext(),CustomerSettingsActivity.class));
+                            return true;
+                        }
+                        else {
+                            startActivity(new Intent(getApplicationContext(), SignInActivity.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+                        }
                     case R.id.cart:
                         startActivity(new Intent(getApplicationContext(), CartActivity.class));
                         overridePendingTransition(0, 0);

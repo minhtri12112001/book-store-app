@@ -57,6 +57,7 @@
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.26615384615384613" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/drawable/cart_item_backround.xml" value="0.26615384615384613" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/drawable/cart_payment_background.xml" value="0.26615384615384613" />
+        <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/drawable/edit_text_background.xml" value="0.2462962962962963" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/drawable/ic_cart.xml" value="0.26615384615384613" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/drawable/rounded.xml" value="0.12777777777777777" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/drawable/search_view_background.xml" value="0.12777777777777777" />
@@ -65,8 +66,11 @@
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/activity_book_list_by_category.xml" value="0.18931159420289856" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/activity_cart.xml" value="0.23233695652173914" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/activity_category.xml" value="0.23233695652173914" />
+        <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/activity_confirm_order.xml" value="0.2296195652173913" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/activity_customer_settings.xml" value="0.23233695652173914" />
+        <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/activity_delivery_information.xml" value="0.24320652173913043" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/activity_demo.xml" value="0.22780797101449277" />
+        <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/activity_finish_payment.xml" value="0.21965579710144928" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/activity_main.xml" value="0.23233695652173914" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/activity_sign_up.xml" value="0.23233695652173914" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/book_view.xml" value="0.17798913043478262" />
@@ -76,13 +80,18 @@
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/fragment_book_detail.xml" value="0.23233695652173914" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/fragment_book_list_by_category.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/fragment_bottom_navigation.xml" value="0.18931159420289856" />
+        <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/fragment_bottom_order_list.xml" value="0.2246376811594203" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/fragment_cart_list.xml" value="0.23233695652173914" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/fragment_category_list.xml" value="0.23233695652173914" />
+        <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/fragment_customer_settings.xml" value="0.16394927536231885" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/fragment_login.xml" value="0.23233695652173914" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/fragment_main_menu.xml" value="0.16485507246376813" />
+        <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/fragment_order_list.xml" value="0.2296195652173913" />
+        <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/fragment_sign_in.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/fragment_sign_up.xml" value="0.23233695652173914" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/layout_bottom_sheet.xml" value="0.18931159420289856" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/menu_item.xml" value="0.1" />
+        <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/layout/order_item.xml" value="0.2296195652173913" />
         <entry key="..\:/Users/LEGION/Desktop/Mobile Development/BookStore/app/src/main/res/menu/bottom_menu.xml" value="0.25416666666666665" />
       </map>
     </option>

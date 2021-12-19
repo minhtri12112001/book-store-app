@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -14,14 +13,12 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.bookstore.Adapter.BookListByCategoryDataAdapter;
-import com.example.bookstore.Adapter.Top5PublishDayBookDataAdapter;
 import com.example.bookstore.Object.Book;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -74,9 +71,15 @@ public class BookListByCategoryActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.customerSettings:
-                        startActivity(new Intent(getApplicationContext(), CustomerSettingsActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+                        if (MainActivity.isLogin == true ){
+                            startActivity(new Intent(getApplicationContext(),CustomerSettingsActivity.class));
+                            return true;
+                        }
+                        else {
+                            startActivity(new Intent(getApplicationContext(), SignInActivity.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+                        }
                 }
                 return false;
             }

@@ -3,8 +3,8 @@ package com.example.bookstore;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,17 +19,24 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.bookstore.Object.CartItem;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.gson.Gson;
 
 import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BookDetailActivity extends AppCompatActivity {
     private TextView tv_book_name, tv_book_cost, buy_now_button,  tv_author;
     private ImageView iv_book_detail_book_image,plus_button,minus_button;
     private EditText sizeno_value;
     private Button cart_pay_button;
+    private String user_order_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,16 +77,7 @@ public class BookDetailActivity extends AppCompatActivity {
                 bottomSheetView.findViewById(R.id.btn_continue).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        bottomSheetDialog.dismiss();
-                    }
-                });
-                bottomSheetView.findViewById(R.id.btn_cart_pay).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
                         if (MainActivity.cartItems.size() > 0){
-                            //String book_id = (String) getIntent().getStringExtra("book_id");
-                            //Log.d("book_id", getIntent().getStringExtra("book_id"));
                             int total_number_1 = Integer.parseInt(sizeno_value.getText().toString());
                             boolean isExisted = false;
                             for (int i = 0; i < MainActivity.cartItems.size() ; i++){
@@ -88,9 +86,52 @@ public class BookDetailActivity extends AppCompatActivity {
                                     //Log.d("cart_item_id", "true");
                                     MainActivity.cartItems.get(i).setTotal_number((MainActivity.cartItems.get(i).getTotal_number() + total_number_1));
                                     if (MainActivity.cartItems.get(i).getTotal_number() >= 10){
-                                        MainActivity.cartItems.get(i).setTotal_number(10);
+                                        MainActivity.cartItems.get(i).setTotal_number(9);
                                     }
-                                    //MainActivity.cartItems.get(i).setCost(integer_book_cost * MainActivity.cartItems.get(i).getTotal_number());
+                                    isExisted = true;
+                                }
+                            }
+                            if (isExisted == false){
+                                int total_number = Integer.parseInt(sizeno_value.getText().toString());
+                                //long total_price = total_number * integer_book_cost;
+                                MainActivity.cartItems.add(new CartItem(
+                                        getIntent().getStringExtra("book_id"),
+                                        getIntent().getStringExtra("book_name"),
+                                        integer_book_cost,
+                                        getIntent().getStringExtra("book_image"),
+                                        total_number
+                                ));
+                            }
+                        }
+                        else {
+                            int total_number = Integer.parseInt(sizeno_value.getText().toString());
+                            //long total_price = total_number * integer_book_cost;
+                            MainActivity.cartItems.add(new CartItem(
+                                    getIntent().getStringExtra("book_id"),
+                                    getIntent().getStringExtra("book_name"),
+                                    integer_book_cost,
+                                    getIntent().getStringExtra("book_image"),
+                                    total_number
+                            ));
+                        }
+                        bottomSheetDialog.dismiss();
+                    }
+                });
+                bottomSheetView.findViewById(R.id.btn_cart_pay).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        if (MainActivity.cartItems.size() > 0){
+                            int total_number_1 = Integer.parseInt(sizeno_value.getText().toString());
+                            boolean isExisted = false;
+                            for (int i = 0; i < MainActivity.cartItems.size() ; i++){
+                                Log.d("cart_item_id", String.valueOf(MainActivity.cartItems.get(i).getBook_id().equals(getIntent().getStringExtra("book_id"))));
+                                if ( String.valueOf(MainActivity.cartItems.get(i).getBook_id().equals(getIntent().getStringExtra("book_id"))) == "true"){
+                                    //Log.d("cart_item_id", "true");
+                                    MainActivity.cartItems.get(i).setTotal_number((MainActivity.cartItems.get(i).getTotal_number() + total_number_1));
+                                    if (MainActivity.cartItems.get(i).getTotal_number() >= 10){
+                                        MainActivity.cartItems.get(i).setTotal_number(9);
+                                    }
                                     isExisted = true;
                                 }
                             }
@@ -119,7 +160,7 @@ public class BookDetailActivity extends AppCompatActivity {
                         }
                         Intent intent = new Intent(BookDetailActivity.this, CartActivity.class);
                         startActivity(intent);
-                        //bottomSheetDialog.dismiss();
+
                     }
                 });
                 bottomSheetDialog.setContentView(bottomSheetView);
@@ -166,9 +207,15 @@ public class BookDetailActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.customerSettings:
-                        startActivity(new Intent(getApplicationContext(), CustomerSettingsActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+                        if (MainActivity.isLogin == true ){
+                            startActivity(new Intent(getApplicationContext(),CustomerSettingsActivity.class));
+                            return true;
+                        }
+                        else {
+                            startActivity(new Intent(getApplicationContext(), SignInActivity.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+                        }
                 }
                 return false;
             }
@@ -177,6 +224,43 @@ public class BookDetailActivity extends AppCompatActivity {
         buy_now_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (MainActivity.cartItems.size() > 0){
+                    int total_number_1 = Integer.parseInt(sizeno_value.getText().toString());
+                    boolean isExisted = false;
+                    for (int i = 0; i < MainActivity.cartItems.size() ; i++){
+                        Log.d("cart_item_id", String.valueOf(MainActivity.cartItems.get(i).getBook_id().equals(getIntent().getStringExtra("book_id"))));
+                        if ( String.valueOf(MainActivity.cartItems.get(i).getBook_id().equals(getIntent().getStringExtra("book_id"))) == "true"){
+                            //Log.d("cart_item_id", "true");
+                            MainActivity.cartItems.get(i).setTotal_number((MainActivity.cartItems.get(i).getTotal_number() + total_number_1));
+                            if (MainActivity.cartItems.get(i).getTotal_number() >= 10){
+                                MainActivity.cartItems.get(i).setTotal_number(9);
+                            }
+                            isExisted = true;
+                        }
+                    }
+                    if (isExisted == false){
+                        int total_number = Integer.parseInt(sizeno_value.getText().toString());
+                        //long total_price = total_number * integer_book_cost;
+                        MainActivity.cartItems.add(new CartItem(
+                                getIntent().getStringExtra("book_id"),
+                                getIntent().getStringExtra("book_name"),
+                                integer_book_cost,
+                                getIntent().getStringExtra("book_image"),
+                                total_number
+                        ));
+                    }
+                }
+                else {
+                    int total_number = Integer.parseInt(sizeno_value.getText().toString());
+                    //long total_price = total_number * integer_book_cost;
+                    MainActivity.cartItems.add(new CartItem(
+                            getIntent().getStringExtra("book_id"),
+                            getIntent().getStringExtra("book_name"),
+                            integer_book_cost,
+                            getIntent().getStringExtra("book_image"),
+                            total_number
+                    ));
+                }
                 Intent intent = new Intent(BookDetailActivity.this, CartActivity.class);
                 startActivity(intent);
             }

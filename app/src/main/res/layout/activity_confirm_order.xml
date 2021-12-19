@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".SignUpActivity">
-
+    tools:context=".ConfirmOrderActivity"
+    android:orientation="vertical">
     <fragment
-        android:id="@+id/sign_up"
-        class="com.example.bookstore.Fragment.SignUpFragment"
+        android:id="@+id/book_details"
+        class="com.example.bookstore.Fragment.OrderListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        tools:layout="@layout/fragment_sign_up"></fragment>
-
+        tools:layout="@layout/fragment_order_list">
+    </fragment>
     <fragment
-        android:id="@+id/bottom_fragment"
-        class="com.example.bookstore.Fragment.BottomNavigationFragment"
+        android:id="@+id/bottom_order_list"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_weight="1"
-        tools:layout="@layout/fragment_bottom_navigation"></fragment>
+        android:layout_height="wrap_content"
+        class="com.example.bookstore.Fragment.BottomOrderListFragment"
+        tools:layout="@layout/fragment_bottom_order_list">
+
+    </fragment>
 </LinearLayout>
