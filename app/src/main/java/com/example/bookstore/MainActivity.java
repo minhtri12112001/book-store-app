@@ -9,12 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 
 import com.example.bookstore.Adapter.Top5CheapestCostBookDataAdapter;
 import com.example.bookstore.Adapter.Top5PublishDayBookDataAdapter;
@@ -27,11 +23,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import android.app.SearchManager;
-import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.SearchView.OnQueryTextListener;
-
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -43,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private ArrayList<Book> top5PublishDayBooks, top5CheapestCostBooks;
     private SearchView search_view_button;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,18 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), BookDetailActivity.class));
             }
         });
-
-//        set search button
-        SearchView search_view_button = (SearchView) findViewById(R.id.search_btn);
-
-        search_view_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, SearchViewActivity.class));
-            }
-        });
     }
-
 
     private void CallBookAPIFromCloudFireStore(){
 
