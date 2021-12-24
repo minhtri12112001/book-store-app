@@ -4,129 +4,188 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E1E8ED">
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#475188"
-        android:orientation="vertical">
-
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:padding="20dp"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:textColor="#FFFFFF"
-                android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#E1E8ED">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Thông tin tài khoản">
+                android:background="#475188"
+                android:orientation="vertical">
 
-            </TextView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:padding="20dp"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:textColor="#FFFFFF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Thông tin tài khoản">
+
+                    </TextView>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/customer_item_background"
+                    android:padding="20dp">
+                    <TextView
+                        android:id="@+id/btn_startUpdateUserInformationActivity"
+                        android:gravity="right"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Thay đổi >">
+                    </TextView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp">
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Họ và tên:"
+                            android:textColor="#253F4C"
+                            android:textSize="15dp">
+
+                        </TextView>
+                        <TextView
+                            android:id="@+id/tv_userFullName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chưa cập nhật"
+                            android:textColor="#253F4C"
+                            android:textStyle="bold"
+                            android:textSize="15dp">
+                        </TextView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp">
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Email:"
+                            android:textColor="#253F4C"
+                            android:textSize="15dp">
+
+                        </TextView>
+                        <TextView
+                            android:id="@+id/tv_userEmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chưa cập nhật"
+                            android:textColor="#253F4C"
+                            android:textStyle="bold"
+                            android:textSize="15dp">
+                        </TextView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp">
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Số điện thoại:"
+                            android:textColor="#253F4C"
+                            android:textSize="15dp">
+
+                        </TextView>
+                        <TextView
+                            android:id="@+id/tv_userPhoneNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chưa cập nhật"
+                            android:textColor="#253F4C"
+                            android:textStyle="bold"
+                            android:textSize="15dp">
+                        </TextView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="10dp">
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Địa chỉ liên hệ:"
+                            android:textColor="#253F4C"
+                            android:textSize="15dp">
+
+                        </TextView>
+                        <TextView
+                            android:id="@+id/tv_userAddress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chưa cập nhật"
+                            android:textColor="#253F4C"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:maxLines="1"
+                            android:ellipsize="end">
+                        </TextView>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:background="@drawable/customer_item_background"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lịch sử mua hàng"
+                        android:textColor="#253F4C"
+                        android:textSize="15dp">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/tv_more_order"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="175dp"
+                        android:text="Xem thêm >">
+
+                    </TextView>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_logout"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center"
+                    android:text="đăng xuất">
+                </Button>
+            </LinearLayout>
+
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="20dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Họ và tên"
-            android:textColor="#253F4C"
-            android:textStyle="bold"
-            android:textSize="15dp">
-        </TextView>
-        <EditText
-            android:id="@+id/et_userFullName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:padding="10dp"
-            android:background="@drawable/edit_text_background"
-            android:textSize="15dp"
-            android:textColor="#253F4C">
+    </ScrollView>
 
-        </EditText>
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:textColor="#253F4C"
-            android:textStyle="bold"
-            android:textSize="15dp">
-        </TextView>
-        <EditText
-            android:id="@+id/et_userEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:padding="10dp"
-            android:background="@drawable/edit_text_background"
-            android:textSize="15dp"
-            android:textColor="#253F4C">
-
-        </EditText>
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Số điện thoại"
-            android:textColor="#253F4C"
-            android:textStyle="bold"
-            android:textSize="15dp">
-        </TextView>
-        <EditText
-            android:id="@+id/et_userPhoneNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:padding="10dp"
-            android:background="@drawable/edit_text_background"
-            android:textSize="15dp"
-            android:textColor="#253F4C">
-
-        </EditText>
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Địa chỉ liên hệ"
-            android:textColor="#253F4C"
-            android:textStyle="bold"
-            android:textSize="15dp">
-        </TextView>
-        <EditText
-            android:id="@+id/et_userAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:padding="10dp"
-            android:background="@drawable/edit_text_background"
-            android:textSize="15dp"
-            android:textColor="#253F4C">
-        </EditText>
-        <Button
-            android:id="@+id/btn_update_userInformation"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Cập nhật">
-
-        </Button>
-        <Button
-            android:id="@+id/btn_logout"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
-            android:text="đăng xuất">
-        </Button>
-    </LinearLayout>
 </LinearLayout>

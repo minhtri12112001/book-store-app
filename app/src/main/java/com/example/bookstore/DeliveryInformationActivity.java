@@ -63,6 +63,7 @@ public class DeliveryInformationActivity extends AppCompatActivity {
         order.put("phoneNumber", new_phoneNumber);
         order.put("address", new_address);
         order.put("total_book_id",MainActivity.cartItems.size());
+        order.put("isPaid",false);
         Log.d("user_id: ", user_id);
         for (int i = 0; i < MainActivity.cartItems.size(); i++) {
             //dorder.put("book_id "+ (i + 1), MainActivity.cartItems.get(i).getBook_id());

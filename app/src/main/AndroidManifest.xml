@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookStore">
         <activity
+            android:name=".UpdateUserInformationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OrderDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UserOrderActivity"
+            android:exported="true" />
+        <activity
             android:name=".SearchActivity"
             android:exported="true" />
         <activity

@@ -59,6 +59,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), DeliveryInformationActivity.class));
+                FirebaseFirestore.getInstance().collection("orders").document(DeliveryInformationActivity.order_id).delete();
             }
         });
     }
@@ -96,18 +97,6 @@ public class ConfirmOrderActivity extends AppCompatActivity {
                         if (documentSnapshot.exists()) {
                             long total_book_id = documentSnapshot.getLong("total_book_id");
                             for (int i = 0; i < total_book_id; i++){
-                                //Log.d("Order_item" + i, documentSnapshot.getString("cartItem" + (i+1) +".book_id"));
-                                //Log.d("Order_item" + i, documentSnapshot.getString("cartItem" + (i+1) +".book_name"));
-                                /*
-                                orderItems.add(new CartItem(
-                                        documentSnapshot.getString("cartItem" + (i+1) +".book_id"),
-                                        documentSnapshot.getString("cartItem" + (i+1) +".book_id"),
-                                        documentSnapshot.getLong("cartItem" + (i+1) +".cost"),
-                                        documentSnapshot.getString("cartItem" + (i+1) +".book_image"),
-                                        documentSnapshot.getLong("cartItem" + (i+1) +".total_number")
-                                ));
-
-                                 */
                                 CartItem orderItem = new CartItem(
                                         documentSnapshot.getString("cartItem" + (i+1) +".book_id"),
                                         documentSnapshot.getString("cartItem" + (i+1) +".book_name"),
