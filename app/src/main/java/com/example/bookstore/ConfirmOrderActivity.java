@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,12 +33,15 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     static ArrayList<Long> totalNumberAlreadySales;
     private RecyclerView rv_order_list;
     private OrderListDataAdapter orderListDataAdapter;
+    private ProgressDialog progressDialog;
     TextView tv_order_total_cost;
     Button btn_confirm_order;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_order);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.show();
         iv_back_deliveryInformation = findViewById(R.id.btn_back_deliveryInformation);
         tv_order_total_cost = findViewById(R.id.tv_order_total_cost);
         CallOrderAPIFromCloudFireStore(DeliveryInformationActivity.order_id);
@@ -53,6 +57,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         rv_order_list.setAdapter(orderListDataAdapter);
         //Log.d("Order item", orderItems.get(0).getBook_id());
         finishOrder(DeliveryInformationActivity.order_id);
+
 
 
         iv_back_deliveryInformation.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +134,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
                                 orderListDataAdapter.notifyDataSetChanged();
                             }
                             showCost();
+                            progressDialog.dismiss();
                         }
 
                     }

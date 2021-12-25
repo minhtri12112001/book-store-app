@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -60,7 +61,6 @@ public class CartActivity extends AppCompatActivity {
         rv_cart_list.setLayoutManager(layoutManager);
         rv_cart_list.setHasFixedSize(true);
         rv_cart_list.setAdapter(cartItemDataAdapter);
-
 
         checkData();
 
