@@ -11,6 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BookStore">
+<!--        <activity-->
+<!--            android:name=".SearchViewActivity"-->
+<!--            android:exported="true"-->
+<!--            android:label="@string/title_activity_search_view"-->
+<!--            android:theme="@style/Theme.BookStore.NoActionBar" />-->
         <activity
             android:name=".UpdateUserInformationActivity"
             android:exported="true" />
@@ -55,10 +60,12 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".LoadingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

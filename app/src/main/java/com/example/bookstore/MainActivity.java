@@ -12,8 +12,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.SearchView;
 
 import com.example.bookstore.Adapter.Top5CheapestCostBookDataAdapter;
 import com.example.bookstore.Adapter.Top5PublishDayBookDataAdapter;
@@ -39,6 +37,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import android.widget.SearchView;
+import android.widget.ImageView;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -129,9 +130,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         //Define bottom navigation view 's function
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
@@ -191,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+
     private void CallBookAPIFromCloudFireStore(){
 
         //Get top 5 publish day books from cloud firestore

@@ -2,6 +2,7 @@ package com.example.bookstore;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
@@ -80,7 +81,7 @@ public class SignUpActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         confirmPassword = findViewById(R.id.confirmPassword);
         btn_signup = findViewById(R.id.btn_signup);
-
+        LoadingDialog loadingDialog = new LoadingDialog(SignUpActivity.this);
         mAuth = FirebaseAuth.getInstance();
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +104,14 @@ public class SignUpActivity extends AppCompatActivity {
                 } else {
                     sign_up_error.setVisibility(View.INVISIBLE);
                     createAccount(txt_email, txt_password);
+                    loadingDialog.startLoadingDialog();
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            loadingDialog.dismissDialog();
+                        }
+                    }, 5000);
                 }
             }
         });
